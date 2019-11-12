@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Links</id>
+    <version>0.8</version>
+    <title>Links helpers</title>
+    <authors>dtila</authors>
+    <owners>dtila</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Extract url links from emails, messages</description>
+
+    <dependencies>
+      <dependency id="HtmlAgilityPack" version="1.11.16" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\src\Links\bin\Release\Links.dll" target="lib\net461" />
+  </files>
+</package>
