@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Links
 {
-    public class MailLinks : CodeActivity
+    public class ExtractLinksFromMail : CodeActivity
     {
         [Category("Input")]
         [RequiredArgument]
@@ -26,10 +26,13 @@ namespace Links
             if (mailMessage.IsBodyHtml)
                 throw new InvalidOperationException("The body mail of the message is not formatted as an HTML");
 
-            Links.Set(context, ExtractLinks(mailMessage.Body));
+            Links.Set(context, MailLinks.ExtractLinks(mailMessage.Body));
         }
+    }
 
-        public IList<string> ExtractLinks(string body)
+    public class MailLinks
+    {
+        public static IList<string> ExtractLinks(string body)
         {
             var html = new HtmlDocument();
             try

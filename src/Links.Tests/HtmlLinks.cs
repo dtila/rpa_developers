@@ -16,8 +16,7 @@ namespace Links.Tests
         {
             var html = @"invalid html";
 
-            var activity = new MailLinks();
-            var links = activity.ExtractLinks(html);
+            var links = MailLinks.ExtractLinks(html);
             links.Should().HaveCount(0);
         }
 
@@ -33,8 +32,7 @@ namespace Links.Tests
 </body>
 </html> ";
 
-            var activity = new MailLinks();
-            var links = activity.ExtractLinks(html);
+            var links = MailLinks.ExtractLinks(html);
             links.Should().HaveCount(0);
         }
 
@@ -48,8 +46,7 @@ namespace Links.Tests
 </body>
 </html> ";
 
-            var activity = new MailLinks();
-            var links = activity.ExtractLinks(html);
+            var links = MailLinks.ExtractLinks(html);
             links.Should().HaveCount(1);
 
             links[0].Should().Be("#");

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Links", "Links\Links.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Links.Tests", "Links.Tests\Links.Tests.csproj", "{A31D1997-9113-47ED-9755-BC43E0EB2A81}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DC554240-C992-436A-8662-D2285DE15057}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{DC554240-C992-436A-8662-D2285DE15057}"
 	ProjectSection(SolutionItems) = preProject
 		..\build\project.nuspec = ..\build\project.nuspec
 	EndProjectSection
