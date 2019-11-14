@@ -9,7 +9,7 @@ using FluentAssertions;
 
 namespace Links.Tests
 {
-    public class HtmlLinks
+    public class HtmlLinksTests
     {
         [Fact]
         public void WhenInput_IsNotValid_ExceptionIsNotThrown()
