@@ -1,5 +1,4 @@
-﻿using HtmlAgilityPack;
-using System;
+﻿using System;
 using System.Activities;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,28 +25,27 @@ namespace Links
             if (mailMessage.IsBodyHtml)
                 throw new InvalidOperationException("The body mail of the message is not formatted as an HTML");
 
-            Links.Set(context, MailLinks.ExtractLinks(mailMessage.Body));
+            Links.Set(context, LinksHelper.ExtractLinks(mailMessage.Body));
         }
     }
 
-    public class MailLinks
+    public class ExtractLinksFromMessage : CodeActivity
     {
-        public static IList<string> ExtractLinks(string body)
+        [Category("Input")]
+        [RequiredArgument]
+        public InArgument<string> Message { get; set; }
+
+        [Category("Output")]
+        public OutArgument<IList<string>> Links { get; set; }
+
+
+        protected override void Execute(CodeActivityContext context)
         {
-            var html = new HtmlDocument();
-            try
-            {
-                html.LoadHtml(body);
-                var links = from node in html.DocumentNode.Descendants("a")
-                            let href = node.Attributes["href"]
-                            where href != null && !string.IsNullOrEmpty(href.Value)
-                            select href;
-                return links.Select(li => li.Value).ToList();
-            }
-            catch (Exception ex)
-            {
-                throw new NotImplementedException(ex.Message);
-            }
+            var message = Message.Get(context);
+            if (string.IsNullOrEmpty(message))
+                throw new ArgumentNullException("Message is empty");
+
+            Links.Set(context, LinksHelper.ExtractLinks(message));
         }
     }
 }
